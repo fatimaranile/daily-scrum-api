@@ -1,0 +1,34 @@
+{
+  "name": "daily-scrum-api",
+  "version": "1.0.0",
+  "description": "This is a simple and straightfoward backend project that would handle a developer's daily scrum updates.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatimaranile/daily-scrum-api.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "nodejs",
+    "express",
+    "sequelize",
+    "postgresql"
+  ],
+  "author": "fatima ranile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatimaranile/daily-scrum-api/issues"
+  },
+  "homepage": "https://github.com/fatimaranile/daily-scrum-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5"
+  }
+}

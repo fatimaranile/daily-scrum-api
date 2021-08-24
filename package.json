@@ -1,7 +1,7 @@
 {
   "name": "daily-scrum-api",
   "version": "1.0.0",
-  "description": "This is a simple and straightfoward backend project that would handle a developer's daily scrum updates.",
+  "description": "This is a simple and straightforward backend project that would handle a developer's daily scrum updates.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

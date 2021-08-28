@@ -1,6 +1,8 @@
 const cors = require("cors");
 const express = require("express");
 
+const database = require("./src/models");
+
 const corsOptions = {
   origin: "http://localhost:8081",
 };
@@ -18,6 +20,8 @@ expressApp.get("/", (request, response) => {
     message: "Daily Scrum API is running.",
   });
 });
+
+database.sequelize.sync();
 
 expressApp.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

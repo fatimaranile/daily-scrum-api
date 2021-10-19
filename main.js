@@ -30,6 +30,7 @@ if (process.env.NODE_ENV === "development") {
   db.sequelize.sync();
 }
 
+require("./src/routes/index")(app);
 
 app.listen(PORT, () => {
   console.log(`Web server is running on port ${PORT}`);

@@ -9,9 +9,6 @@ const User = (sequelize, Sequelize) => {
     password: {
       type: Sequelize.STRING,
     },
-    token: {
-      type: Sequelize.STRING,
-    },
   });
 };
 

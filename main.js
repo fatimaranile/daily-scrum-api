@@ -1,7 +1,8 @@
+require('dotenv').config();
 const cors = require("cors");
 const express = require("express");
 
-//const database = require("./src/models");
+const db = require("./src/models");
 
 const corsOptions = {
   origin: "http://localhost:8081",
@@ -21,8 +22,15 @@ app.get("/", (request, response) => {
   });
 });
 
-//database.sequelize.sync();
+if (process.env.NODE_ENV === "development") {
+  db.sequelize.sync({ force: true }).then(() => {
+    console.log("Dropping database.");
+  });
+} else {
+  db.sequelize.sync();
+}
+
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Web server is running on port ${PORT}`);
 });

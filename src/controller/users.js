@@ -39,16 +39,19 @@ exports.update = (req, res) => {
       if (num == 1) {
         res.send({
           success: true,
+          message: "The information of the user is updated!",
         });
       } else {
         res.send({
           success: false,
+          message: "Cannot update user information.",
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
         success: false,
+        message: err.message || "Error updating user information.",
       });
     });
 };
@@ -62,7 +65,6 @@ exports.login = (req, res) => {
 
   User.findAll({ where: condition })
     .then((data) => {
-      console.log("data::here", data);
       if (data.length > 0) {
         res.send({ success: true, data: data[0] });
       } else {
@@ -73,6 +75,31 @@ exports.login = (req, res) => {
       res.status(500).send({
         success: false,
         message: err.message || "Some error occured while logging in.",
+      });
+    });
+};
+
+exports.delete = (req, res) => {
+  const { id } = req.params;
+
+  User.destroy({ where: { id: id } })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          success: true,
+          message: "User was successfully deleted!",
+        });
+      } else {
+        res.send({
+          success: false,
+          message: "Deleting user is not successful.",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        success: false,
+        message: err.message || "Error encountered while deleting user.",
       });
     });
 };

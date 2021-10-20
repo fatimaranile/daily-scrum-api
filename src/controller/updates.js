@@ -25,9 +25,33 @@ function addUpdate(req, res) {
                 success: false,
                 message: err.message || "An error occured while saving your update.",
             })
+        });
+}
+
+function editUpdate(req, res) {
+    const { id } = req.params;
+
+    Update.update(req.body, { where: { id: id } })
+        .then((result) => {
+            if (result == 1) {
+                res.send({
+                    success: true,
+                });
+            } else {
+                res.send({
+                    success: false,
+                });
+            }
         })
+        .catch((err) => {
+            res.status(400).send({
+                success: false,
+                message: err.message || "Error changing your daily update.",
+            })
+        });
 }
 
 module.exports = {
     addUpdate,
+    editUpdate,
 }

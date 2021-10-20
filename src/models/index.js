@@ -19,11 +19,18 @@ const sequelize = new Sequelize(
   }
 );
 
-const database = {};
+const db = {};
 
-database.Sequelize = Sequelize;
-database.sequelize = sequelize;
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
 
-database.users = require("./users.js")(sequelize, Sequelize);
+db.users = require("./users.js")(sequelize, Sequelize);
+db.updates = require("./updates.js")(sequelize, Sequelize);
 
-module.exports = database;
+db.users.hasMany(db.updates, { as: "update" });
+db.updates.belongsTo(db.users, {
+  foreignKey: "userId",
+  as: "user",
+});
+
+module.exports = db;
